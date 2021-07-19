@@ -134,7 +134,7 @@ Ports 443, 8443 TCP Encrypted Traffic and in FQDN Format
 ![image](https://user-images.githubusercontent.com/23119194/126209401-13cd1fdc-b1e4-450a-a371-1e9c389e7272.png)
 
 - Look for Server Key Exchange and Client key Exchange packet 
-- (No "Client Hello"?)
+> No "Client Hello"
 ![image](https://user-images.githubusercontent.com/23119194/126209843-27e8cb26-be49-40a9-9663-ee0faf7e2c54.png)
 
 - The number of new Client Hello messages is abnormal.  (ssl.record.content_type == 22)
