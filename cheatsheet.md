@@ -118,11 +118,11 @@ Port 80, 8080 - plantext traffic, typically in FQDN format.
 - TCP Spurious Retransmission -> Investigate [TCP Zero Window](https://wiki.wireshark.org/TCP%20ZeroWindow)
 
 **Useful Areas withing Wireshark**
-- > **_Wireshark_** Statistics > Conversations >  TCP Tab
-- > **_Wireshark_** Statics > Protocol Hierarchy
-- > **_Wireshark_** File Export Objects > HTML
-- > **_Wireshark_** Statics > Endpoints
-- > **_Wireshark_** Statics > Conversions
+- **_Wireshark_** Statistics > Conversations >  TCP Tab
+- **_Wireshark_** Statics > Protocol Hierarchy
+- **_Wireshark_** File Export Objects > HTML
+- **_Wireshark_** Statics > Endpoints
+- **_Wireshark_** Statics > Conversions
 
 Wireshark References
 > HTTP Filters [here](https://www.wireshark.org/docs/dfref/h/http.html) and [here](https://www.wireshark.org/docs/dfref/h/http2.html)
