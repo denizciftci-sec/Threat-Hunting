@@ -131,15 +131,12 @@ Wireshark References
 **HTTPS**
 Ports 443, 8443 TCP Encrypted Traffic and in FQDN Format
 - Look for traffic *not* encrypted and SSL packet details are empty
-- Look for Server Key Exchange and Client key Exchange packet
+![image](https://user-images.githubusercontent.com/23119194/126209401-13cd1fdc-b1e4-450a-a371-1e9c389e7272.png)
 
-**Normal HTTPS**
-```
-Content Type = Handshake
-Handshake Protocol: Client Hello
-Version: TLS 1.2
-Cipher Suites: (11 suites)
-Compression Method: (1 method)
+- Look for Server Key Exchange and Client key Exchange packet (No "Client Hello"?)
+
+
+
 ```
 
 ## Unknown Traffic Threats
