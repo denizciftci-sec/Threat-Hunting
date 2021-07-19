@@ -137,6 +137,9 @@ Ports 443, 8443 TCP Encrypted Traffic and in FQDN Format
 - (No "Client Hello"?)
 ![image](https://user-images.githubusercontent.com/23119194/126209843-27e8cb26-be49-40a9-9663-ee0faf7e2c54.png)
 
+- The number of new Client Hello messages is abnormal.  (ssl.record.content_type == 22)
+> Taking into consideration both the above, it looks like we are dealing with a SSL Renegotiation Attack
+![image](https://user-images.githubusercontent.com/23119194/126210256-2a769166-f472-4471-9a45-60b618df7918.png)
 
 
 
