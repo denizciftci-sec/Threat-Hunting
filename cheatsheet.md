@@ -91,6 +91,25 @@ Destination Port Abnormalities - Destination port 0 (TCP)
 - The MAC address of the client (192.168.1.4) in this packet is different than the MAC address that is included in all previous packets related to this host.
 - It looks like an attacker has taken over (hijacked) the whole Telnet session. This is also apparent in packet #17, that includes the MAC address of the attacker and the command the attacker issued (uname –a)
 
+**OFT2 - Unknown Traffic**
+At the beginning of the TCP Stream, you will see OFT2. OFT2 is AOL instant messaging protocol, OSCAR (Open
+System for CommunicAtion in Realtime).
+![image](https://user-images.githubusercontent.com/23119194/131216480-b12b78f9-2753-464b-ada6-aed746fd5f33.png)
+
+Wireshark > Analyze > Enable Protocols
+![image](https://user-images.githubusercontent.com/23119194/131216496-772c4a9c-e898-402a-8e05-94a0a442a89e.png)
+
+Before
+![image](https://user-images.githubusercontent.com/23119194/131216537-56541a15-7615-4846-ab8c-009ea29a1bfe.png)
+
+
+On one of the packets,  right-click and select Decode As.
+A new window will appear titled “Wireshark Decode As…”
+![image](https://user-images.githubusercontent.com/23119194/131216558-28f851b5-6901-4938-aae2-359be1794d71.png)
+
+After
+![image](https://user-images.githubusercontent.com/23119194/131216564-9ad1cd22-6191-4de6-819d-3ada00c05b18.png)
+
 ## DNS Threats
 - Port 53, should only be **UDP** not **TCP** (Name Queries)
 - DNS traffic should only go to DNS servers
