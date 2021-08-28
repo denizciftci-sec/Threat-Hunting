@@ -141,7 +141,10 @@ Ports 443, 8443 TCP Encrypted Traffic and in FQDN Format
 > Taking into consideration both the above, it looks like we are dealing with a SSL Renegotiation Attack
 ![image](https://user-images.githubusercontent.com/23119194/126210256-2a769166-f472-4471-9a45-60b618df7918.png)
 
-
+- Look for TCP(443) TCP Spurious Retransmission
+![image](https://user-images.githubusercontent.com/23119194/131216255-68f3af8e-a48e-40d1-b39c-4868d7fa8761.png)
+TCP Spurious Retransmission is when the sending host ‘thinks’ that the receiving host didn’t receive the packet and
+sends it again. 
 
 ```
 
