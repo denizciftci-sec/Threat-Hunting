@@ -166,12 +166,8 @@ TCP Spurious Retransmission is when the sending host ‘thinks’ that the recei
 sends it again. 
 
 ```
+**Webshell Analysis**
 
-## Unknown Traffic Threats
-- Inspect protocols on network for strange protocols. *IE: IRC Chats, C2 Servers etc*
-> **_Wireshark_** Analyze > Enable Protocols
-
-# Webshell Analysis
 - Reference suspicious files on servers/web servers
 - Look for cmd.exe powershell.exe or eval()
 - Analyze IIS and Apache logs
@@ -184,59 +180,27 @@ sends it again.
 > str_rot13()
 > gzinflate()
 
-**JPEG PHP Exif**
-[exiftool(-k)](http://www.sno.phy.queensu.ca/~phil/exiftool/)
-```
-<?php
-echo "Find file *.jpg :<br />\n List file may be negative :<br />\n";
-$exifdata = array();
-foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator('.')) as $filename)
-{
-    //echo "$filename<br />\n";
-        if      (strpos($filename,".jpg")==true or strpos($filename,".JPG")==true)
-        {
-                $exif = read_exif_data($filename);
-/*1*/   if (isset($exif["Make"])) {
-                        $exifdata["Make"] = ucwords(strtolower($exif["Make"]));
-                        if (strpos($exifdata["Make"],"/e")==true) echo "$filename<br />\n";
-                }
-/*2*/   if (isset($exif["Model"])) {
-                        $exifdata["Model"] = ucwords(strtolower($exif["Model"]));
-                        if (strpos($exifdata["Model"],"/e")==true) echo "$filename<br />\n";
-                }
-/*3*/   if (isset($exif["Artist"])) {
-                        $exifdata["Artist"] = ucwords(strtolower($exif["Artist"]));
-                        if (strpos($exifdata["Artist"],"/e")==true) echo "$filename<br />\n";
-                }
-/*4*/   if (isset($exif["Copyright"])) {
-                        $exifdata["Copyright"] = ucwords(strtolower($exif["Copyright"]));
-                        if (strpos($exifdata["Copyright"],"/e")==true) echo "$filename<br />\n";
-                }
-/*5*/   if (isset($exif["ImageDescription"])) {
-                        $exifdata["ImageDescription"] = ucwords(strtolower($exif["ImageDescription"]));
-                        if (strpos($exifdata["ImageDescription"],"/e")==true) echo "$filename<br />\n";
-                }
-/*6*/   if (isset($exif["UserComment"])) {
-                        $exifdata["UserComment"] = ucwords(strtolower($exif["UserComment"]));
-                        if (strpos($exifdata["UserComment"],"/e")==true) echo "$filename<br />\n";
-                }
-        }
-}
-echo "Done!";
-?>
-```
-
 **Linux Commands**
 ```
-find. -type f -name '*.php' -mtime -1
-find. -type f -name '*.txt' -mtime -1
-find. -type f -name '*.php' | xargs grep -l "eval *("
-find. -type f -name '*.txt' | xargs grep -l "eval *("
-find. -type f -name '*.php' | xargs grep -l "base64_decode*("
+- find . –type f –name ‘*.php’ –mtime -1
+#locate new files within a 24-hour period that have been placed onto the web server
+
+- find . –type f –name ‘*.txt’ –mtime -1
+# same for txt
+
+- find . –type f –name ‘*.php’ | xargs grep –l “eval *(”
+#find eval function for php files
+
+- find . –type f –name ‘*.txt’ | xargs grep –l “eval *(”
+#same for txt
+
+- find . –type f –name ‘*.php’ | xargs grep –l “base64_decode*(”
+# look for base64_decode() in php function
+
+- find . –type f –name ‘*.php’ | xargs egrep -i "(mail|fsockopen|pfsockopen|exec|system|passthru|eval|base64_decode) *\("
+- find . -type f -name '*.txt' | xargs grep -l "(mail|fsocketopen|pfsockopen|exec|system|passthru|eval|base64_decode) *\("
+
 ```
-```
-find . -type f -name '*.php' | xargs grep -l "(mail|fsocketopen|pfsockopen|exec|system|passthru|eval|base64_decode) *\("
-find . -type f -name '*.txt' | xargs grep -l "(mail|fsocketopen|pfsockopen|exec|system|passthru|eval|base64_decode) *\("
 ```
 **Windows Commands**
 [.ps1 scripts](https://github.com/securycore/ThreatHunting)
