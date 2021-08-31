@@ -312,7 +312,19 @@ advanced techniques are required, such as memory analysis.
 - TASKHOST.EXE is a generic host process which acts as a host for processes that run from DLLs rather than EXEs. At startup, TASKHOST checks the Services portion of the Registry to construct a list of DLL-based services that it needs to load, and then loads them.
 - In Windows 8, this process was renamed to taskhostex.exe.
 - In Windows 10, this process was renamed to taskhostw.exe.
+- Executable Path: %SystemRoot%\System32\taskhost.exe
 
+**explorer.exe**
+- EXPLORER.EXE is the Windows Explorer.
+- Explorer.exe is responsible for the user’s desktop and everything that comes with it, including access to files (file browser) and launching files via their file extensions.
+- Even if multiple Windows Explorer windows open, only 1 process will be spawned per logged on user.
+- Executable Path: %SystemRoot%\explorer.exe
+- Hunting Tip : This process is targeted by malware as well. Different techniques will be incorporated, like the ones already mentioned, against this process. They will inject into the process, spawn malware named as explorer.exe, run it from a different folder or misspell it and have it run from the actual folder. Look for instances where explorer has CMD hanging off it or is listening/connected on a network port.
+- Hunting Tip : Let’s add more to the checklist shown near the beginning of this section.
+• Core Windows processes shouldn’t run from Windows temp locations, or the Recycle Bin, and neither should be communicating to any outbound IPs.
+• Check for digital signatures (all Microsoft artifacts should be digitally signed)
+• Look for any process that have cmd.exe, wscript.exe, powershell.exe etc. running as a child process.
+• Lastly, you’ll need to dig deeper, and that is where memory analysis will come into play to find instances of DLL injection, Process Hollowing, etc.
 
 
 **Windows Event Logs**
