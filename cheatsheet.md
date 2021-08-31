@@ -195,7 +195,7 @@ sends it again.
 
 ```
 
-```
+
 **Windows Commands**
 [.ps1 scripts](https://github.com/securycore/ThreatHunting)
 [Get-FullPathFileStacking.ps1](https://gist.github.com/anonymous/e8ced9c92a689e4cdb67fe0417cd272c)
