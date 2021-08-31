@@ -182,26 +182,26 @@ sends it again.
 
 **Linux Commands**
 ```
-- find . –type f –name ‘*.php’ –mtime -1
+> find . –type f –name ‘*.php’ –mtime -1
 #locate new files within a 24-hour period that have been placed onto the web server
 
-- find . –type f –name ‘*.txt’ –mtime -1
-# same for txt
-
-- find . –type f –name ‘*.php’ | xargs grep –l “eval *(”
-#find eval function for php files
-
-- find . –type f –name ‘*.txt’ | xargs grep –l “eval *(”
+> find . –type f –name ‘*.txt’ –mtime -1
 #same for txt
 
-- find . –type f –name ‘*.php’ | xargs grep –l “base64_decode*(”
-# look for base64_decode() in php function
+> find . –type f –name ‘*.php’ | xargs grep –l “eval *(”
+#find eval function for php files
 
-- find . –type f –name ‘*.php’ | xargs egrep -i "(mail|fsockopen|pfsockopen|exec|system|passthru|eval|base64_decode) *\("
-- find . -type f -name '*.txt' | xargs grep -l "(mail|fsocketopen|pfsockopen|exec|system|passthru|eval|base64_decode) *\("
+> find . –type f –name ‘*.txt’ | xargs grep –l “eval *(”
+#same for txt
 
-```
-```
+> find . –type f –name ‘*.php’ | xargs grep –l “base64_decode*(”
+#look for base64_decode() in php function
+
+> find . –type f –name ‘*.php’ | xargs egrep -i "(mail|fsockopen|pfsockopen|exec|system|passthru|eval|base64_decode) *\("
+> find . -type f -name '*.txt' | xargs grep -l "(mail|fsocketopen|pfsockopen|exec|system|passthru|eval|base64_decode) *\("
+
+
+
 **Windows Commands**
 [.ps1 scripts](https://github.com/securycore/ThreatHunting)
 [Get-FullPathFileStacking.ps1](https://gist.github.com/anonymous/e8ced9c92a689e4cdb67fe0417cd272c)
