@@ -181,9 +181,9 @@ sends it again.
 > gzinflate()
 
 **Linux Commands**
-```
-> find . –type f –name ‘*.php’ –mtime -1
-#locate new files within a 24-hour period that have been placed onto the web server
+
+- find . –type f –name ‘*.php’ –mtime -1
+# locate new files within a 24-hour period that have been placed onto the web server
 
 > find . –type f –name ‘*.txt’ –mtime -1
 #same for txt
