@@ -307,6 +307,9 @@ should be explorer.exe. Another registry key that is abused by malware that work
 - Hunting Tip2 : When it comes to services, we will need to perform extra  steps to determine whether the service/DLL being loaded by svchost.exe is legitimate or not.
 It’s more than just checking for misspellings in svchost.exe, because techniques such as Process Injection and Process Hollowing can attack legitimate services. In these cases,
 advanced techniques are required, such as memory analysis.
+	
+**taskhost.exe**
+
 
 **Windows Event Logs**
 >Successful Logon (ID 4624)
