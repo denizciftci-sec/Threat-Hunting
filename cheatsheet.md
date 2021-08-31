@@ -183,7 +183,8 @@ sends it again.
 ```
 
 **Linux Commands**
-> find . –type f –name ‘*.php’ –mtime -1
+
+- find . –type f –name ‘*.php’ –mtime -1
 > find . –type f –name ‘*.txt’ –mtime -1
 > find . –type f –name ‘*.php’ | xargs grep –l “eval *(”
 > find . –type f –name ‘*.txt’ | xargs grep –l “eval *(”
