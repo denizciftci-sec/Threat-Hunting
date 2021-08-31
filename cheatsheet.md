@@ -309,6 +309,10 @@ It’s more than just checking for misspellings in svchost.exe, because techniqu
 advanced techniques are required, such as memory analysis.
 	
 **taskhost.exe**
+- TASKHOST.EXE is a generic host process which acts as a host for processes that run from DLLs rather than EXEs. At startup, TASKHOST checks the Services portion of the Registry to construct a list of DLL-based services that it needs to load, and then loads them.
+- In Windows 8, this process was renamed to taskhostex.exe.
+- In Windows 10, this process was renamed to taskhostw.exe.
+
 
 
 **Windows Event Logs**
