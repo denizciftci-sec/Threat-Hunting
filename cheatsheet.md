@@ -284,7 +284,29 @@ should be explorer.exe. Another registry key that is abused by malware that work
 - Services are defined in HKLM\SYSTEM\CurrentControlSet\Services.
 - Maintains an in-memory database of service information which can be queried using the built-in Windows tool, sc.exe.
 -  After a successful interactive login, services.exe will backup a copy of the registry keys into HKLM\SYSTEM\Select\LastKnownGood which will be known as the Last Known Good Configuration.
+- Executable Path: %SystemRoot%\System32\services.exe
+- Hunting Tip : You should only see 1 instance of services.exe. This is a protected process which makes it difficult to tamper with.
 
+**lsass.exe**
+- LSASS.EXE is the Local Security Authority Subsystem. It is responsible for user authentication and generating access tokens specifying security policies and/or restrictions for the user and the processes spawned in the user session.
+- Uses authentication packages within HKLM\System\CurrentControlSet\Control\Lsa to authenticate users.
+- Creates security tokens for SAM, AD, and NetLogon.
+- Writes to the Security event log.
+- Executable Path: %SystemRoot%\System32\lsass.exe
+- Hunting Tip : You should only see 1 instance of lsass.exe. This process is commonly attacked and abused by hackers and malware. It is targeted to dump password hashes and is often used to hide in plain sight. You might see different variations of spelling for this process (lass.exe or lsasss.exe), and might even see multiple instances of it, like with Stuxnet malware. 
+
+**svchost.exe**
+- SVCHOST.EXE is the Generic Service Host Process. It is responsible for hosting multiple services DLLs into a generic shared service process.
+- Each service will have registry entries that include ServiceDll. This will instruct svchost.exe what DLL to use. The entry will also include svchost.exe –k <name>.
+- Multiple instances of svchost.exe host will be running, as seen in the screenshot to the right.
+- All DLL-based services with the same <name> will share the same svchost.exe process.
+- <name> values are found in Software\Microsoft\Windows NT\CurrentVersion\Svchost registry key.
+- Each svchost.exe process will run with a unique –k <name>
+- Executable Path: %SystemRoot%\System32\svchost.exe
+- Hunting Tip : This process is another process that is heavily abused. It can be used to launch malicious services (malware installed as a service). When this is done, (-k) will not be present. This process is often misspelled to hide in plain sight. Another technique used with this process is to place it in different directories, but note that services.exe will not be the parent.
+- Hunting Tip2 : When it comes to services, we will need to perform extra  steps to determine whether the service/DLL being loaded by svchost.exe is legitimate or not.
+It’s more than just checking for misspellings in svchost.exe, because techniques such as Process Injection and Process Hollowing can attack legitimate services. In these cases,
+advanced techniques are required, such as memory analysis.
 
 **Windows Event Logs**
 >Successful Logon (ID 4624)
