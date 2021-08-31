@@ -243,10 +243,20 @@ sends it again.
 [Linux Malware Detect](https://www.rfxn.com/projects/linux-malware-detect/)
 [Invoke-ExchangeWebShellHunter](https://github.com/FixTheExchange/Invoke-ExchangeWebShellHunter)
 
+## Windows Processes
+
 ## Malware Analysis
 
-**Windows Event Logs**
 
+- SMSS.EXE is known as the Session Manager. Its responsibility is to create new sessions.
+- Session 0 starts csrss.exe and wininit.exe. (OS services)
+- Session 1 starts csrss.exe and winlogon.exe. (User session)
+-  You will see 1 instance (Session 0) within the process tree. The child instances  of smss.exe which was used to create the other sessions, by copying itself into that new session, will self-terminate.
+- Executable Path: %SystemRoot%\System32\smss.exe
+- Hunting Tip : Sessions 0 and 1 are normal. Additional sessions may be created by Remote Desktop Protocol (RDP) sessions and Fast User Switching on shared computers. If this does not apply to your environment, then it’s worth checking the additional sessions (if such exist). Remember only 1 instance of smss.exe should be running. 
+
+
+**Windows Event Logs**
 >Successful Logon (ID 4624)
 
 >Failed Logon (ID 4625)
