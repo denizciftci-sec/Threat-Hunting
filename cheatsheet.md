@@ -210,7 +210,7 @@ sends it again.
 [Log Parser Studio Tool](https://gallery.technet.microsoft.com/office/Log-Parser-Studio-cd458765) - IIS Web Logs
 
 
-```
+
 [Loki](https://github.com/loki-project/loki)
 > MD5/SHA1/SHA256 hashes
 > Yara rules
