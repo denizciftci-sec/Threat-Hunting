@@ -182,9 +182,9 @@ sends it again.
 
 ```
 
-```
-**Linux Commands**
 
+**Linux Commands**
+```
 > find . –type f –name ‘*.php’ –mtime -1
 > find . –type f –name ‘*.txt’ –mtime -1
 > find . –type f –name ‘*.php’ | xargs grep –l “eval *(”
@@ -194,7 +194,6 @@ sends it again.
 > find . -type f -name '*.txt' | xargs grep -l "(mail|fsocketopen|pfsockopen|exec|system|passthru|eval|base64_decode) *\("
 
 ```
-
 
 **Windows Commands**
 [.ps1 scripts](https://github.com/securycore/ThreatHunting)
