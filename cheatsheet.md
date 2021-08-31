@@ -182,9 +182,10 @@ sends it again.
 
 ```
 
+```
 **Linux Commands**
 
-- find . –type f –name ‘*.php’ –mtime -1
+> find . –type f –name ‘*.php’ –mtime -1
 > find . –type f –name ‘*.txt’ –mtime -1
 > find . –type f –name ‘*.php’ | xargs grep –l “eval *(”
 > find . –type f –name ‘*.txt’ | xargs grep –l “eval *(”
@@ -192,6 +193,9 @@ sends it again.
 > find . –type f –name ‘*.php’ | xargs egrep -i "(mail|fsockopen|pfsockopen|exec|system|passthru|eval|base64_decode) *\("
 > find . -type f -name '*.txt' | xargs grep -l "(mail|fsocketopen|pfsockopen|exec|system|passthru|eval|base64_decode) *\("
 
+```
+
+```
 **Windows Commands**
 [.ps1 scripts](https://github.com/securycore/ThreatHunting)
 [Get-FullPathFileStacking.ps1](https://gist.github.com/anonymous/e8ced9c92a689e4cdb67fe0417cd272c)
@@ -199,11 +203,13 @@ sends it again.
 [Get-W3WPChildren.ps1](https://gist.github.com/anonymous/140f4455ede789f7c3c3419946d1bd66)
 > get-childitem -recurse include "*.php" | select-string "(mail|fsockopen|pfsockopen|exec\b|system\b|passthru|eval\b|base64_decode)" | %{"$($_.filename):$($_.line)"}| Out-Gridview
 
+```
 
 **Webshell Toolkit**
 [Log Parser Studio Tool](https://gallery.technet.microsoft.com/office/Log-Parser-Studio-cd458765) - IIS Web Logs
 
 
+```
 [Loki](https://github.com/loki-project/loki)
 > MD5/SHA1/SHA256 hashes
 > Yara rules
