@@ -326,6 +326,8 @@ advanced techniques are required, such as memory analysis.
 • Look for any process that have cmd.exe, wscript.exe, powershell.exe etc. running as a child process.
 • Lastly, you’ll need to dig deeper, and that is where memory analysis will come into play to find instances of DLL injection, Process Hollowing, etc.
 
+	
+```
 
 **Windows Event Logs**
 >Successful Logon (ID 4624)
