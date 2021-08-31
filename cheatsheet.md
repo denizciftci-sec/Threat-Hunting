@@ -252,6 +252,39 @@ sends it again.
 - Executable Path: %SystemRoot%\System32\smss.exe
 - Hunting Tip : Sessions 0 and 1 are normal. Additional sessions may be created by Remote Desktop Protocol (RDP) sessions and Fast User Switching on shared computers. If this does not apply to your environment, then it’s worth checking the additional sessions (if such exist). Remember only 1 instance of smss.exe should be running. 
 
+**csrss.exe**
+- CSRSS.EXE is the Client/Server Run Subsystem Process. It is responsible for managing processes and threads, as well as making the Windows API available for other processes. It’s also responsible for mapping drive letters, creating temp files, and handling the shutdown process.
+- Runs within Session 0 and 1.
+- Will be available for each newly created user session
+- Executable Path: %SystemRoot%\System32\csrss.exe
+- Hunting Tip : Malware authors can masquerade their malware to appear as this process by hiding in plain sight. They can name the malware as csrss.exe but just misspell it slightly. Examples of this would be cssrs.exe, cssrss.exe, and csrsss.exe. Remember, typically you will see 2 instances of csrss.exe.
+
+**winlogon.exe**
+-WINLOGON.EXE is the Windows Logon Process. It is responsible for user logons/logoffs. It launches LogonUI.exe for username and password and passes credentials to LSASS.exe which is verified via AD or local SAM.
+- Loads Userinit.exe via Software\Microsoft\Windows NT\CurrentVersion\Winlogon.
+- Executable Path: %SystemRoot%\System32\winlogon.exe
+- Hunting Tip : The abuse within this process often comes within the different components of the login process. Malware sometimes abuses the SHELL registry value. This value
+should be explorer.exe. Another registry key that is abused by malware that works in conjunction with winlogon.exe is Userinit.
+
+**wininit.exe**
+- WININIT.EXE is the Windows Initialization Process. It is responsible to launch services.exe, lsass.exe, and lsm.exe in Session 0.
+- Executable Path: %SystemRoot%\System32\wininit.exe
+- Hunting Tip : You should only see 1 instance of wininit.exe.
+
+**lsm.exe**
+- LSM.EXE is the Local Session Manager. It is responsible to work with smss.exe to create, destroy, or manipulate new user sessions.
+- Responsible for logon/logoff, shell start/end,lock/unlock desktop to name a few.
+- Note: After Windows 7, lsm.exe no longer exists, and it is now a service called lsm.dll.
+- Executable Path: %SystemRoot%\System32\lsm.exe
+- Hunting Tip : You should only see 1 instance of lsm.exe on Windows 7 machines. You should NOT be seeing this on Windows 8 and beyond. It will be running as a service DLL instead,lsm.dll.
+
+**services.exe**
+- SERVICES.EXE is the Service Control Manager. It is responsible for loading services (auto-start) and device drivers into memory.
+- Parent to svchost.exe, dllhost.exe, taskhost.exe, spoolsv.exe, etc.
+- Services are defined in HKLM\SYSTEM\CurrentControlSet\Services.
+- Maintains an in-memory database of service information which can be queried using the built-in Windows tool, sc.exe.
+-  After a successful interactive login, services.exe will backup a copy of the registry keys into HKLM\SYSTEM\Select\LastKnownGood which will be known as the Last Known Good Configuration.
+
 
 **Windows Event Logs**
 >Successful Logon (ID 4624)
