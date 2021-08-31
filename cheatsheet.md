@@ -244,10 +244,7 @@ sends it again.
 [Invoke-ExchangeWebShellHunter](https://github.com/FixTheExchange/Invoke-ExchangeWebShellHunter)
 
 ## Windows Processes
-
-## Malware Analysis
-
-
+**SMS.EXE**
 - SMSS.EXE is known as the Session Manager. Its responsibility is to create new sessions.
 - Session 0 starts csrss.exe and wininit.exe. (OS services)
 - Session 1 starts csrss.exe and winlogon.exe. (User session)
